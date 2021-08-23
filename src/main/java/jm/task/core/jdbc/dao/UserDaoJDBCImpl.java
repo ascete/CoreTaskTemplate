@@ -19,7 +19,7 @@ public class UserDaoJDBCImpl extends Util implements UserDao {
     @Override
     public void createUsersTable() {
         try (Statement st1 = connectUtil.createStatement()) {
-                st1.execute("create table if not exists Users (" +
+            st1.execute("create table if not exists Users (" +
                     "ID bigint primary key auto_increment," +
                     "Name varchar(15) not null," +
                     "LastName varchar(15)," +
@@ -38,8 +38,10 @@ public class UserDaoJDBCImpl extends Util implements UserDao {
         }
     }
 
+
+
     @Override
-    public void saveUser(String name, String lastName, int age) {
+    public void saveUser(String name, String lastName, byte age) {
         String sql = "insert into Users (Name, LastName, Age) values (?, ?, ?)";
         try (PreparedStatement st1 = connectUtil.prepareStatement(sql)) {
             st1.setString(1, name);
